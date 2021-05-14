@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+:root {
+    --nav-height: 80px;
+    --nav-wrapper-width: 966px;
+}
+
+/* MAIN PAGE */
+.main {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - var(--nav-height));
+    background: url('../img/back2.jpg') no-repeat center;
+    background-size: cover;
+}
+
+
+nav {
+    width: 100%;
+    height: var(--nav-height);  
+    position: relative;
+}
+
+.nav-wrapper {
+
+    width: var(--nav-wrapper-width);
+    height: 45px;
+    position: absolute;
+
+    top: 20%;
+    left: calc(50% - (var(--nav-wrapper-width) / 2));
+}
+
+nav button {
+    font: 400 18px 'Nunito';
+    background: none;
+    outline: none;
+    border: none;
+    
+    width: 150px;
+    height: 45px;
+
+    margin-right: 40px;
+}
+
+nav button:hover {
+    border-bottom: 2px solid black;
+}
+
+
+/* PAGES */
+
+.field {
+    width: 70%;
+    min-width: 800px;
+    margin: auto;
+}
+
+.field form {
+    
+    width: 50%;
+    padding-top: 150px;
+    margin: 0 auto;
+}
+
+.field .result-block {
+    width: 50%;
+    height: 400px;
+}
+
+.field form h1 { 
+    font: 600 22px 'Nunito';
+    color: #f7f5f4;
+    text-align: center;
+}
+
+.field form input {
+    outline: none;
+    border: none;
+    background: none;
+    display: block;
+
+    font: 400 16px 'Nunito';
+    margin: 0 auto;
+}
+
+.field form input[type='text'] {
+
+    border-bottom: 2px solid #C7AC91;   
+    width: 300px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.field form input[type='submit'] {
+    border: 2px solid #f7f5f4;
+    width: 200px;
+    height: 35px;
+}
+
+.field form input[type='text']::placeholder {  
+    color: #bd9b79;
+}
