@@ -1,4 +1,4 @@
-from app import app
+from app import app, method
 from flask import render_template, request, redirect, url_for
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,17 +15,27 @@ def index():
 
 
 
-@app.route('/t01', methods=['GET', 'POST'])
-def t01():
+@app.route('/t<number>', methods=['GET', 'POST'])
+def tasks(number):
+    return render_template(f'/pages/t{number}.html')
+
+
+
+@app.route('/api/solving', methods=['GET', 'POST'])
+def api():
     if request.method == 'POST':
-        pass
-    return render_template('/pages/t01.html')
+        data = json.loads(request.data.decode('utf-8'))
+        # Controller
+        if data['type'] == 'task01':
+            method.task1(data['data'])
+        elif data['type'] == 'task02':
+            method.task1(data['data'])
+        elif data['type'] == 'task03':
+            method.task1(data['data'])
+        elif data['type'] == 'task04':
+            method.task1(data['data'])
+        elif data['type'] == 'task05':
+            method.task1(data['data'])
 
-
-
-@app.route('/t02', methods=['GET', 'POST'])
-def t02():
-    if request.method == 'POST':
-        pass             
-    return render_template('/pages/t02.html')
-
+        return json.dumps({'type': 'solving', 'code': 1, 'data': 'none' })
+      

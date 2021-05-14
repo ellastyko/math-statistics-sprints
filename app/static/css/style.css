@@ -83,10 +83,11 @@ nav button:hover {
 .field form input {
     outline: none;
     border: none;
-    background: none;
+    background: rgba(1, 1, 1, 0);
     display: block;
 
     font: 400 16px 'Nunito';
+    color: #f7f5f4;
     margin: 0 auto;
 }
 
