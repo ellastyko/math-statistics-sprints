@@ -69,11 +69,6 @@ nav button:hover {
     margin: 0 auto;
 }
 
-.field .result-block {
-    width: 50%;
-    height: 400px;
-}
-
 .field form h1 { 
     font: 600 22px 'Nunito';
     color: #f7f5f4;
@@ -108,4 +103,27 @@ nav button:hover {
 
 .field form input[type='text']::placeholder {  
     color: #bd9b79;
+}
+
+
+.field .result-block {
+    width: 60%;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+.result-block table {
+
+    text-align: center;
+}
+
+.result-block table th {
+    font: 400 16px 'Nunito';
+    color: #f7f5f4;
+}
+
+.result-block table td {
+    font: 400 14px 'Nunito';
+    color: #f7f5f4;
 }

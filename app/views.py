@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 
-# @app.errorhandler(404)
+@app.errorhandler(404)
 def error404(e):
     return render_template('/pages/404.html'), 404
 
@@ -25,9 +25,10 @@ def tasks(number):
 def api():
     if request.method == 'POST':
         data = json.loads(request.data.decode('utf-8'))
+        
         # Controller
         if data['type'] == 'task01':
-            method.task1(data['data'])
+            return json.dumps(method.task1(data['data']))
         elif data['type'] == 'task02':
             method.task1(data['data'])
         elif data['type'] == 'task03':
