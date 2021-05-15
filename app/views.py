@@ -30,9 +30,9 @@ def api():
         if data['type'] == 'task01':
             return json.dumps(method.task1(data['data']))
         elif data['type'] == 'task02':
-            method.task1(data['data'])
+            return json.dumps(method.task2(data['data']))
         elif data['type'] == 'task03':
-            method.task1(data['data'])
+            return json.dumps(method.task3(data['data']))
         elif data['type'] == 'task04':
             method.task1(data['data'])
         elif data['type'] == 'task05':

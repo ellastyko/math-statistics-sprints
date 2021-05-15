@@ -1,29 +1,8 @@
 
-async function post(url, data) {
-    const response = await fetch(url, { 
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-              'Content-Type': 'application/json'
-              // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-        }
-    )
-    const json = await response.json()
-
-    return json
-}
 
 let th = ['Sample', 'Frequency', 'Accumulated frequencies', 'Relative frequencies', 'cumulative relative frequencies']
 
 function createTable(data) {
-
-    // $('form').css({'padding-top': '50px'})
 
     $('.result-block').empty()
     $('.result-block').append('<table></table><tr>')
@@ -48,7 +27,7 @@ function createTable(data) {
 $(document).ready(function() {
 
     $('form').submit((e) => {
-        
+
         e.preventDefault()
 
         let request = {
@@ -65,9 +44,6 @@ $(document).ready(function() {
                 return 0
             createTable(data.data)    
         })
-
-
-        
     })
     
 
