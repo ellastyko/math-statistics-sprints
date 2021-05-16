@@ -2,16 +2,22 @@
 {% block title %}Task 2{% endblock %}
 {% block body %}
 <div class='field'>
-        <form action="POST">
+        <form action="POST" style='box-sizing: border-box; height: calc(100vh - var(--nav-height));'>
             <h1>Input samples</h1>
             <input type="text" id='sample-1' placeholder='Input sample A'>
             <input type="text" id='sample-2' placeholder='Input sample B'>
             <input type="submit"  id='result' value='Solve'>
         </form>
-        <div class='result-block'>
-
-        </div> 
+        
 </div>
+<div class='graph-block' hidden>
+    <div id='histogram'></div>
+    <div class='empirical-wrapper'>
+        <div id='empirical'></div>
+    </div>  
+    <div id='polygon'></div>
+    <div id='empirical-graph'></div> 
+</div> 
 {% endblock %}
 
 {% block js %}

@@ -18,46 +18,121 @@ class Method():
         B = [int(i) for i in B]
         return A, B
     
+    def frequency(self, A):
+        res = []
+        for i in A.keys():
+            res.append(A[i])
+        return res
+
+    def acc_frequency(self, frequency):
+        res = [0 for i in range(len(frequency))]
+        for i in range(len(frequency)):
+            for j in range(i + 1):
+                res[i] += frequency[j]
+        return res
+
+    def rel_frequency(self, frequency, length):
+        res = []
+        for i in range(len(frequency)):       
+            res.append(frequency[i] / length)
+        return res
+
+    def cum_rel_frequency(self, rel_frequency):
+        res = [0 for i in range(len(rel_frequency))]
+        for i in range(len(rel_frequency)):
+            for j in range(i + 1):
+                res[i] += rel_frequency[j]
+        return res
+
+
     def task1(self, data):
 
+        sample, mode, frequency, acc_frequency, rel_frequency, cum_rel_frequency = [], [], [], [], [], []
         A, B = self.convert(data)
 
-        sample = sorted(set(A + B))
+        sample.append(sorted(set(A)))
+        sample.append(sorted(set(B)))
 
-        mode = Counter(A + B)
-        frequency = []
-        for i in mode.keys():
-            frequency.append(mode[i])
+        mode.append(Counter(A))
+        mode.append(Counter(B))
+
+        frequency.append(self.frequency(mode[0]))
+        frequency.append(self.frequency(mode[1]))
+
+        acc_frequency.append(self.acc_frequency(frequency[0]))
+        acc_frequency.append(self.acc_frequency(frequency[1]))
+
+        rel_frequency.append(self.rel_frequency(frequency[0], len(A)))
+        rel_frequency.append(self.rel_frequency(frequency[1], len(B)))
+
+            
+        cum_rel_frequency.append(self.cum_rel_frequency(rel_frequency[0]))
+        cum_rel_frequency.append(self.cum_rel_frequency(rel_frequency[1]))
+
+
+        return  {
+                    'sample': sample,
+                    'freq': frequency,
+                    'acc_freq': acc_frequency,
+                    'rel_freq': rel_frequency,
+                    'cum_rel_freq': cum_rel_frequency
+                }
         
 
-        acc_frequency = np.zeros(len(frequency))
-        for i in range(len(frequency)):
-            for j in range(i + 1):
-                acc_frequency[i] += frequency[j]
+    def empirical_function(self, x, frequency, length):
 
-        rel_frequency = np.zeros(len(frequency))
-        for i in range(len(frequency)):       
-            rel_frequency[i] = frequency[i] / len(A + B)
-            
-        cum_rel_frequency = np.zeros(len(rel_frequency))
-        for i in range(len(frequency)):
-            for j in range(i + 1):
-                cum_rel_frequency[i] += rel_frequency[j]
+        rel_frequency = self.rel_frequency(frequency, length) 
+        cum_rel_frequency = self.cum_rel_frequency(rel_frequency)
+        string = '<table><th>An empirical distribution function<th>'
+        for i in range(len(cum_rel_frequency)):
+            if i == 0:
+                string += f'<tr><td>{round(cum_rel_frequency[i], 3)}, if  x <= {x[i]}<tr><td>'
+            elif i == len(frequency) - 1:
+                string += f'<tr><td>{round(cum_rel_frequency[i], 3)}, if x >= {x[i-1]}<tr><td>'
+            else:
+                string += f'<tr><td>{round(cum_rel_frequency[i], 3)}, if {x[i-1]} < x <= {x[i]}<tr><td>'
+        string += '</table>'
+        return string, cum_rel_frequency
+
+
+
+
+
+    def task2(self, data):
+        a, b = [], []
+        A, B = self.convert(data)
+
+        # Все элементы
+        a.append(A)
+        b.append(B)
+
+        # Уникальные элементы
+        unique_A = list(set(A))
+        unique_B = list(set(B))
+        a.append(unique_A)
+        b.append(unique_B)
+
+        # Значения моды
+        a.append([Counter(A)[i] for i in unique_A])
+        b.append([Counter(B)[i] for i in unique_B])
+
+        # Эмпирические функции
+        ta, la = self.empirical_function(a[1], a[2], len(A))
+        tb, lb = self.empirical_function(b[1], b[2], len(B))
+        a.append(ta)
+        a.append(la)
+        b.append(tb)
+        b.append(lb)
 
         return {
             'type': 'result', 
             'data': {
-                'sample': sample,
-                'freq': frequency,
-                'acc_freq': acc_frequency.tolist(),
-                'rel_freq': rel_frequency.tolist(),
-                'cum_rel_freq': cum_rel_frequency.tolist()
+                'a': a,
+                'b': b
             }
         }
-
-
-    def task2(self, data):
-        pass    
+        
+        
 
 
     def task3(self, data):

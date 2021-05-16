@@ -105,16 +105,16 @@ nav button:hover {
     color: #bd9b79;
 }
 
-
+/* FOR 3 task */
 .field .result-block {
+    
     width: 60%;
     height: 300px;
     margin: 0 auto;
     margin-top: 35px;
 }
 
-.result-block table {
-
+table {
     text-align: center;
 }
 
@@ -126,4 +126,52 @@ nav button:hover {
 .result-block table td {
     font: 400 14px 'Nunito';
     color: #f7f5f4;
+}
+
+
+
+/* TASK 02 AND 01 */
+
+.result, .graph-block {
+    width: 100%;
+}
+
+.graph-block {
+    height: 100vh;
+}
+
+.result table {
+    margin: 50px auto;
+}
+
+.result table th {
+    font: 500 18px 'Nunito';
+    color: rgb(27, 27, 27);
+}
+
+.result table td {
+    font: 400 16px 'Nunito';
+    color: rgb(27, 27, 27);
+}
+
+
+#histogram, #polygon {
+    float: left;
+    width: 35%;
+    height: 50vh;
+}
+
+#empirical {
+    font: 400 16px 'Nunito';
+    box-sizing: border-box;
+    float: left;
+    padding: 30px 0 0 100px;
+    height: 50vh;
+    width: 65%;
+}
+
+#empirical-graph {
+    float: left; 
+    width: 65%;
+    height: 50vh;
 }
