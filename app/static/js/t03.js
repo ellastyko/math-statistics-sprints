@@ -39,7 +39,7 @@ $(document).ready(function() {
                 B: $('#sample-2').val()
             }         
         }
-        console.log(request)
+
         post('http://127.0.0.1:5000/api/solving', request)
         .then(data => {
 

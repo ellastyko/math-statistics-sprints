@@ -1,48 +1,38 @@
 
 function histogram(a) {
 
-    var graph = {
+    Plotly.plot('histogram', [{
 
         x: a[1],
         y: a[2],
         type: 'bar'
-    };
-    
-    var layout = {
+    }], {
         title: 'Graph of variation series'
-    }; 
-    Plotly.plot( 'histogram', [graph], layout );
+    });
 }
 
 function emperical(a) {  
-
-    var graph = {
+    
+    Plotly.plot( 'empirical-graph', [{
 
         x: a[1],
         y: a[4],
         type: 'bar'
-    };
-    
-    var layout = {
+    }], {
         title: 'Empirical graph'
-    }; 
-    Plotly.plot( 'empirical-graph', [graph], layout );
+    });
 }
 
 function polygon(a) {
 
-
-    var graph = {
+    Plotly.plot('polygon', [{
 
         x: a[1],
         y: a[2],
         type: 'polygon'
-    };
-    
-    var layout = {
+    }], {
         title: 'Graph of variation series'
-    }; 
-    Plotly.plot( 'polygon', [graph], layout );
+    });
 }
 
 
@@ -67,15 +57,22 @@ $(document).ready(function() {
     $('form').submit((e) => {
 
         e.preventDefault()
-        
-        if (document.querySelector('.graph-block').hidden == false) {
+        // To clear graphs and tables
+        if ($('.graph-block').is(":visible") == true) {
+
             $('#empirical').empty()
             Plotly.deleteTraces('histogram', [0, 1]);
             Plotly.deleteTraces('polygon', [0, 1]);
             Plotly.deleteTraces('empirical-graph', [0, 1]);
         }
-        document.querySelector('.graph-block').hidden = false
-        document.querySelector('.graph-block').scrollIntoView(false);
+
+        $('.graph-block').show()
+        // Scrolling to result
+        var offset = $(".graph-block").offset();
+        $('html, body').animate({
+            scrollTop: offset.top,
+            scrollLeft: offset.left
+        }, 1000);
 
         let request = {
             type: 'task02',
@@ -92,8 +89,6 @@ $(document).ready(function() {
             result(data.data)    
         })
     })
-    
-
 })
 
 

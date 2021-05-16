@@ -4,20 +4,16 @@ let th = ['Sample', 'Frequency', 'Accumulated frequencies', 'Relative frequencie
 
 function createTable(data) {
 
-    console.log(data)
     $('.result').empty()
     
-    
     for (let j = 0; j < 2; j++) {
-        $('.result').append(`<table id='t${j}'></table><tr>`)
+        $('.result').append(`<table id='${j}'></table><tr>`)
 
-        for (n of th) {
-            $(`.result #t${j}`).append(`<th>${n}</th>`)
-        }
-
-
+        for (n of th) 
+            $(`.result #${j}`).append(`<th>${n}</th>`)
+        
         for (i in data.sample[j]) {
-            $(`.result #t${j}`)
+            $(`.result #${j}`)
             .append(`</tr>
                     <tr>
                         <td>${data.sample[j][i]}</td>
@@ -28,7 +24,12 @@ function createTable(data) {
                     </tr>`)
         }
     }
-    document.querySelector('.result').scrollIntoView(false);
+    // Scrolling to result
+    var offset = $(".result").offset();
+    $('html, body').animate({
+        scrollTop: offset.top,
+        scrollLeft: offset.left
+    }, 1000);
 }   
 
 
@@ -38,7 +39,7 @@ $(document).ready(function() {
     $('form').submit((e) => {
 
         e.preventDefault()
-        document.querySelector('.result').hidden = false
+        $('.result').show()
         
         let request = {
             type: 'task01',

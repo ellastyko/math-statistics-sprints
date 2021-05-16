@@ -6,14 +6,12 @@
             <h1>Input samples</h1>
             <input type="text" id='sample-1' placeholder='Input sample A'>
             <input type="text" id='sample-2' placeholder='Input sample B'>
-            <input type="submit"  id='result' value='Solve'>
+            <input type="submit" id='result' value='Solve'>
         </form>
-        <div class='result' hidden>
-
-        </div> 
+        <div class='result' style="display: none;"></div> 
 </div>
 {% endblock %}
 
 {% block js %}
-<script src="{{ url_for('static', filename='js/t01.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/t01.js') }}"></script>
 {% endblock %}
