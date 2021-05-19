@@ -33,13 +33,25 @@ def api():
                                 'data': method.task1(data['data'])
                             })
         elif data['type'] == 'task02':
-            return json.dumps(method.task2(data['data']))
+            return json.dumps({ 
+                                'type': 'result', 
+                                'data': method.task2(data['data'])
+                            })
         elif data['type'] == 'task03':
-            return json.dumps(method.task3(data['data']))
+            return json.dumps({ 
+                                'type': 'result', 
+                                'data': method.task3(data['data'])
+                            })
         elif data['type'] == 'task04':
-            method.task1(data['data'])
+            return json.dumps({ 
+                                'type': 'result', 
+                                'data': method.task4(data['data'])
+                            })
         elif data['type'] == 'task05':
-            method.task1(data['data'])
+            return json.dumps({ 
+                                'type': 'result', 
+                                'data': method.task5(data['data'])
+                            })
 
         return json.dumps({'type': 'solving', 'code': 1, 'data': 'none' })
       

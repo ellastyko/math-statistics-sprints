@@ -3,6 +3,7 @@
 <section>
   <h3> ### About ### </h3>
   Web Application written in flask
+  <img src="./app/static/img/1.png"></img>
 </section>
 <section>
   <h3> ### TASKS ### </h3>

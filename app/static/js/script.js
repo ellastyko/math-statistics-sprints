@@ -2,9 +2,9 @@
 
 $(document).ready(function() {
     
-    // $(function(){
-    //     $('.main').ripples();
-    // });
+    $(function(){
+        $('.main').ripples();
+    });
     $('#t01').click(() => {
         document.location.href = 'http://127.0.0.1:5000/t01'
     })
